@@ -11,7 +11,7 @@
 
 
 	/* Подключение к БД */
-	function db_connect($host = "localhost", $login = "root", $password = "", $db = "gnezdilov_db") {
+	function db_connect($host = "localhost", $login = "root", $password = "", $db = "mosiaeva_db") {
 		global $conn;
 		$err = false; // ошибок нет
 
