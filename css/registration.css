@@ -1,5 +1,4 @@
 /* .MSG */
-*{color:black}
 .msg {
 	width: 90%;
 	margin: auto;
@@ -34,7 +33,7 @@
 input:focus{outline:none;}
 
 input {
-	margin-top: 15px;
+  margin-top: 15px;
 	padding:5px;
 	width: 250px;
 	height:25px;
@@ -44,32 +43,36 @@ input {
 	border-radius: 8px;
 }
 
-.sigbut{
-	width:250px;
-	height:30px;
-	font-size: 16px
+.loginbut{
+	width:300px;
+	height:40px;
+	font-size: 16px;
 }
 
-.sig-container {
-	margin-top: 20%;
-	margin-bottom: 43%;
+.reg-container {
+	margin-top: 12%;
+	margin-bottom: 24%;
+  width: 370px;
 	padding:10px;
-	display: grid;
-	grid-template-columns: 350px;
-	grid-template-rows: 50px 75px 75px 75px;
-	grid-template-areas: "sigtext" "siglogin" "sigpasswd" "sigsubm";
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: 50px 75px 75px 75px 75px;
+  grid-template-areas: "regtext" "reglogin" "regpasswd" "regpasswdok" "regsubm";
+	border-radius:10px;
 }
 
-.sigtext {
-	grid-area: sigtext;
-	font-weight: bold;
-	font-family: 'Exo 2', sans-serif;
+.regtext {
+  grid-area: regtext;
+  font-weight: bold;
+  font-family: 'Exo 2', sans-serif;
 }
 
-.siglogin { grid-area: siglogin; }
+.reglogin { grid-area: reglogin; }
 
-.sigpasswd { grid-area: sigpasswd; }
+.regpasswd { grid-area: regpasswd; }
 
-.sigsubm { grid-area: sigsubm; }
+.regpasswdok { grid-area: regpasswdok; }
 
-#sign-up{width: 390px}
+.regsubm { grid-area: regsubm; }
+
+#reg{width:350px}

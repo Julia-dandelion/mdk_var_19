@@ -41,7 +41,7 @@
 				<li><a href="index.php">Главная</a></li>
 				<li><a href="contact.php">Контакты</a></li>
 				<li><a class="" href="sign-up.php">Вход</a></li>
-				<li><a href="reg.php">Регистрация</a></li>
+				<li><a href="registration.php">Регистрация</a></li>
 			</ul>
 
 		<?php endswitch; ?>

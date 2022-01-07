@@ -1,0 +1,48 @@
+/* .ADD */
+main {
+	max-width: 1280px;
+}
+
+h2 { text-align: center; }
+
+button {
+	padding: .3rem;
+	margin: 0.5rem 0;
+}
+
+.items {
+	display: flex;
+	justify-content: space-around;
+}
+
+.add input, .add label, .add textareal, .add select {
+	display: block;
+}
+
+.add label {
+	margin-top: 1rem;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+}
+
+.toggle {
+	border: thin solid #ff4c4c;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.hidden { display: none; }
+
+/* *.ADD */
+textarea {
+	outline: none;
+	-moz-appearance: none;
+	border: 1px solid #999; /* указание этого свойства также удалит обводку в FireFox */
+}
+
+form {
+	margin-bottom: 5%;
+}

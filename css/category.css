@@ -1,0 +1,152 @@
+.card button {
+ border: none;
+ outline: 0;
+ padding: 10px;
+ color: #fff;
+ background-color: #f44336;
+ text-align: center;
+ cursor: pointer;
+ width: 100%;
+ font-size: 18px;
+}
+.card p {
+ font-size: 14px;
+}
+
+.price {
+  color: red;
+  font-size: 18px;
+}
+.card h3 {
+ color: #767676;
+}
+
+.card img {
+	height:125px;
+  width: 200px;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.card {
+height:330px;
+width:200px;
+padding:15px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+max-width: 200px; /* Ограничение ширины */
+margin: auto;
+text-align: center;
+font-family: sans-serif;
+}
+.card section {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.cardprice{
+	display: inline-block;
+}
+
+.decsription{
+	margin-top: 7px;
+	margin-bottom: 8px;
+	overflow-y: scroll;
+	height:100px;
+	width:100%;
+}
+.cardadm {
+height:453px;
+width:200px;
+padding:15px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+max-width: 200px; /* Ограничение ширины */
+margin: auto;
+text-align: center;
+font-family: sans-serif;
+}
+.cardadm section {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.cardadm button {
+ border: none;
+ outline: 0;
+ padding: 10px;
+ color: #fff;
+ background-color: #f44336;
+ text-align: center;
+ cursor: pointer;
+ width: 100%;
+ font-size: 18px;
+}
+.cardadm p {
+ font-size: 14px;
+}
+.cardadm h3 {
+ color: #767676;
+}
+
+.cardadm img {
+	height:125px;
+  width: 200px;
+}
+.usrcard button {
+ border: none;
+ outline: 0;
+ padding: 10px;
+ color: #fff;
+ background-color: #f44336;
+ text-align: center;
+ cursor: pointer;
+ width: 100%;
+ font-size: 18px;
+}
+.usrcard p {
+ font-size: 14px;
+}
+
+.usrprice {
+  color: red;
+  font-size: 18px;
+}
+.usrcard h3 {
+ color: #767676;
+}
+
+.usrcard img {
+	height:125px;
+  width: 200px;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.usrcard {
+height:370px;
+width:200px;
+padding:15px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+max-width: 200px; /* Ограничение ширины */
+margin: auto;
+text-align: center;
+font-family: sans-serif;
+}
+.usrcard section {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.usrcardprice{
+	display: inline-block;
+}
+
+.usrdecsription{
+	margin-top: 7px;
+	margin-bottom: 8px;
+	overflow-y: scroll;
+	height:100px;
+	width:100%;
+}

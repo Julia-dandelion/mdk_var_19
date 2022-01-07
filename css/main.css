@@ -55,7 +55,7 @@ nav a {
   transition: .4s ease-in-out;
 }
 .topmenu {
-	font-size: 15px;
+	font-size: 25px;
     text-align: center;
     padding: 10px 0;
 }
@@ -78,13 +78,13 @@ nav a {
   box-shadow: none;
 }
 .topmenu > li > a {
+    color: black;
   padding: 12px 26px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
   font-family: 'Exo 2', sans-serif;
 }
-.topmenu li a:hover {color: black;}
 .submenu {
   position: absolute;
   left: 50%;
@@ -129,7 +129,7 @@ nav ul li {
 /**/
 .admm{
 
-};
+}
 * {box-sizing: border-box; margin: 0;}
 .widget {
 	position: absolute;
@@ -308,4 +308,3 @@ font-family: sans-serif;
 .dv_main a:link, a:visited {
     color:  rgb(73, 89, 102);;
 }
-

@@ -1,0 +1,94 @@
+﻿/* VIEWER */
+body{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+article {
+	width: 100%;
+	max-width: 800px;
+	min-width: 600px;
+	margin: 0 auto;
+}
+
+header {
+	padding: 1rem;
+}
+
+h1 {
+	font-size: 2rem;
+	font-family: Helvetica;
+	font-weight: 600;
+}
+
+.price {
+	font-size: 20px;
+	color:red;
+	font-family: Arial;
+	text-align: right;
+}
+
+.price:after {
+	content: "р.";
+}
+
+figure {
+	width: 400px;
+}
+
+figure img{
+	max-width: 100%;
+}
+
+blockquote {
+	padding: 1rem;
+	background-color: #c1d82f;
+	border-left: 3px solid #7ac143;
+	margin: 0.5rem 0;
+}
+
+footer {
+	text-align: right;
+	border-top: thin solid #aaa;
+}
+
+/* *VIEWER */
+.view-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 60px 200px 300px;
+  grid-template-areas: "nametov nametov nametov pricetov" "photo-tov photo-tov opisanie-tov opisanie-tov" "photo-tov photo-tov harakt-tov harakt-tov";
+}
+
+.nametov { grid-area: nametov; }
+
+.pricetov { grid-area: pricetov;}
+
+.photo-tov { grid-area: photo-tov; }
+
+.opisanie-tov { grid-area: opisanie-tov; }
+
+.harakt-tov { grid-area: harakt-tov; }
+
+.photo-tov img{width:480px;height:300px;}
+
+.harakt-tov{
+  padding-left:10px;
+}
+.block1{
+min-height:560px;
+}
+button {
+ border: none;
+ outline: 0;
+ padding: 10px;
+ color: #fff;
+ background-color: #f44336;
+ text-align: center;
+ cursor: pointer;
+ width: 100%;
+ font-size: 18px;
+}

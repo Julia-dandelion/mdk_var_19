@@ -1,17 +1,17 @@
 <?php
 
-// параметры подключения
+    // параметры подключения
 	$host = "localhost";// хост
 	$login = "root";	// логин / пароль пользователя
-	$password = "";
+	$password = "root";
 	$db = "mosiaeva_db";	// имя БД с которой будем работать
 
-// объект соединения
+    // объект соединения
 	$conn = FALSE; // соединений на данном этапе нет
 
 
 	/* Подключение к БД */
-	function db_connect($host = "localhost", $login = "root", $password = "", $db = "mosiaeva_db") {
+	function db_connect($host = "localhost", $login = "root", $password = "root", $db = "mosiaeva_db") {
 		global $conn;
 		$err = false; // ошибок нет
 
@@ -43,18 +43,12 @@
 	function add_product($category, $name, $description, $img, $property, $price, $status, $vender_id) {
 		global $conn;
 		$query = "INSERT INTO product VALUES(NULL, '$category', '$name', '$description', '$img', '$property', $price, '$status', $vender_id)";
-
-		//var_dump($query);
-
 		mysqli_query($conn, $query);
 	}
 
     function add_venders($name, $inn, $dir, $phone, $ur_adr, $fiz_adr, $status) {
         global $conn;
         $query = "INSERT INTO vender VALUES(NULL, '$name', '$inn', '$dir', '$phone', '$ur_adr', '$fiz_adr', $status)";
-
-        //var_dump($query);
-
         mysqli_query($conn, $query);
     }
 
@@ -156,7 +150,7 @@
 
 		mysqli_query($conn, $query);
 	}
-	
+
 	function db_update_product1($id, $category, $name, $description, $property, $price, $vender_id, $status) {
 		global $conn;
 		$query = "UPDATE product SET category='$category', name='$name', description='$description', property='$property', price='$price', vender_id='$vender_id', status='$status' WHERE id=$id";
