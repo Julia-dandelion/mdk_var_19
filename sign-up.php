@@ -12,6 +12,11 @@
 						$ok = "Добро пожаловть";
 						$_SESSION["login"] = $usr;
 						$_SESSION["status"] = get_user_status($usr);
+						var_dump(get_user_status($usr));
+						$user_info = get_user_all_info($usr);
+						//ТЫ ОСТАНОВИЛСЯ ТУТ ПОЛУЧАЕТ ПУСТОЕ ЗНАЧЕНИЕ КОРЗИНЫ И НЕ МОЖЕТ СЧИТАТЬ
+                        $_SESSION["trash"] = if( get_prod_ord($user_info["id"]);
+
 						header("Refresh: 2; url=index.php");
 
 				} else {

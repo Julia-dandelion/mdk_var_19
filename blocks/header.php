@@ -1,10 +1,6 @@
 <?php
-    if(isset($_SESSION["login"])){
-        $status = $_SESSION["status"];
-    }
-    else{
-        $status = "none";
-    }
+    require_once "includes/session.php";
+    session_start()
 ?>
 <header>
 
@@ -22,6 +18,7 @@
 							<li><h3 class="widget-title"><a id="3" href="add.php">Добавление товара</a></h3></li>
                             <li><h3 class="widget-title"><a id="3" href="vender.php">Добавление поставщика</a></h3></li>
                             <li><h3 class="widget-title"><a id="3" href="ord.php">Заказы</a></h3></li>
+                            <li><h3 class="widget-title"><a id="3" href="trash.php" id="trash-menu-txt"><?=$trash?></h3></a></li>
 						</ul>
 					</li>
 				</ul>
@@ -32,6 +29,7 @@
 			<ul class="topmenu">
 				<li><a href="index.php">Главная</a></li>
 				<li><a href="contact.php">Контакты</a></li>
+                <li><h3 class="widget-title"><a id="3" href="trash.php" id="trash-menu-txt"><?=$trash?></h3></a></li>
 				<li><a href="includes/logout.php">Выход</a></li>
 			</ul>
 			<?php break; ?>

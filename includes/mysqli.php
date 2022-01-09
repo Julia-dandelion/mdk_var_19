@@ -3,7 +3,7 @@
     // параметры подключения
 	$host = "localhost";// хост
 	$login = "root";	// логин / пароль пользователя
-	$password = "root";
+	$password = "";
 	$db = "mosiaeva_db";	// имя БД с которой будем работать
 
     // объект соединения
@@ -11,7 +11,7 @@
 
 
 	/* Подключение к БД */
-	function db_connect($host = "localhost", $login = "root", $password = "root", $db = "mosiaeva_db") {
+	function db_connect($host = "localhost", $login = "root", $password = "", $db = "mosiaeva_db") {
 		global $conn;
 		$err = false; // ошибок нет
 
@@ -92,7 +92,7 @@
 
 	// уникальная соль
 	function get_salt() {
-		return md5(uniqid() . time . mt_rand());
+		return md5(uniqid() . time() . mt_rand());
 	}
 
 // формируем из результурующей таблицы один массив(все записи в таблицы постепенно добавляем в один массив)
@@ -115,6 +115,18 @@
 		if(mysqli_num_rows($result) > 0)
 			return rowSet($result);
 	}
+
+	// Получаем список из
+    function get_prod_ord($id){
+        global $conn;
+        $query = "SELECT * FROM ord WHERE user_id = $id";
+
+        //var_dump($query);
+
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0)
+            return rowSet($result);
+    }
 
 	// по сути данная фкнция похожа на предыдущие, она и делает тоже самое
 	// будем её использовать для выборки продуктов по категориям
@@ -141,6 +153,17 @@
 
 		return mysqli_fetch_array($result)["status"];
 	}
+
+    function get_user_all_info($login) {
+        global $conn;
+        $query = "SELECT * FROM user WHERE login = '$login'";
+
+        //var_dump($query);
+
+        $result = mysqli_query($conn, $query);
+
+        return mysqli_fetch_array($result);
+    }
 
 	function db_update_product($id, $category, $name, $description, $img, $property, $price, $vender_id, $status) {
 		global $conn;

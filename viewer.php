@@ -1,7 +1,12 @@
 <?php
 	require_once "includes/session.php";
 	require_once "includes/mysqli.php";
-
+    if(isset($_SESSION["login"])){
+        $status = $_SESSION["status"];
+    }
+    else{
+        $status = "none";
+    }
 	if(!empty($_GET["product"])) {
 		$product = $_GET["product"];
 
@@ -29,27 +34,29 @@
 <main>
 	<?php
 	if (isset($result)) {
-		?>
-		<div class="view-container">
-  	<div class="nametov"><h1><?=$result["name"]?><h1></div>
-  	<div class="pricetov">	<div class="price"><?=$result["price"]?></div></div>
-  	<div class="photo-tov"><img  src="<?=$result["img"] == "" ? "img/no-img.png" : $result["img"]?>"></div>
-  	<div class="opisanie-tov">
-	<blockquote><?=$result["description"]?></blockquote> </div>
-	<div class="harakt-tov">
-			<?php
-				$property = json_decode($result["property"], TRUE);
-				$len = count($property["name"]);
+	    $id = $result["id"];
+        $name = $result["name"];
+        $price = $result["price"];
+        $img = $result["img"];
+        $description = $result["description"];
 
-				for($i=0; $i<$len; ++$i) {
-					echo "<p>" . $property["name"][$i] . " - " . $property["value"][$i] . "</p>";
-				}
-			?>
-			<?php
-				switch($_SESSION["status"]) {
+        $property = json_decode($result["property"], TRUE);
+        $len = count($property["name"]);
+
+        for($i=0; $i<$len; ++$i) {
+            echo "<p>" . $property["name"][$i] . " - " . $property["value"][$i] . "</p>";
+        }
+
+				switch($status) {
 					case "user":
 				$izvi=<<<_OUT
-
+                    <div class="view-container">
+                    <div class="nametov"><h1>$name<h1></div>
+                    <div class="pricetov">	<div class="price">$price</div></div>
+                    <div class="photo-tov"><img  src="$img" ? "img/no-img.png" : $img></div>
+                    <div class="opisanie-tov">
+                    <blockquote>$description</blockquote> </div>
+                    <div class="harakt-tov"><div><button type="button" onclick="productInTrash($id)">Заказать</button></div>
 _OUT;
 				echo $izvi;
 
@@ -57,13 +64,32 @@ _OUT;
 
 					case "admin":
 				$izvi=<<<_OUT
+                    <div class="view-container">
+                    <div class="nametov"><h1>$name<h1></div>
+                    <div class="pricetov">	<div class="price">$price</div></div>
+                    <div class="photo-tov"><img  src="$img" ? "img/no-img.png" : $img></div>
+                    <div class="opisanie-tov">
+                    <blockquote>$description</blockquote> </div>
+                    <div class="harakt-tov">
+                    <div>
+                        <button type="button" onclick="productInTrash($id)">Заказать</button>
+                        <a class="tools" href="edit.php?product=$id"><button>Изменить</button></a>
+						 <a class="tools" href="delete.php?product=$id"><button>Удалить</button></a>
+                    </div>
 _OUT;
 				echo $izvi;
 
 				break;
 
 					default:
-				$izvi="";
+				$izvi=<<<_OUT
+                    <div class="view-container">
+                    <div class="nametov"><h1>$name<h1></div>
+                    <div class="pricetov">	<div class="price">$price</div></div>
+                    <div class="photo-tov"><img  src="$img" ? "img/no-img.png" : $img"></div>
+                    <div class="opisanie-tov">
+                    <blockquote>$description</blockquote> </div>               
+_OUT;
 				echo $izvi;
 				break;
 				}

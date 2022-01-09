@@ -1,9 +1,6 @@
 <?php
 	require_once "includes/session.php";
 	require_once "includes/mysqli.php";
-	if($_SESSION["login"] != "") {
-		header("Location: /");
-	}
 	if(!empty($_POST)) {
 		if( !db_connect() ) {
 

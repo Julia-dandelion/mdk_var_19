@@ -20,14 +20,14 @@ header {
 
 h1 {
 	font-size: 2rem;
-	font-family: Helvetica;
+	font-family: 'Roboto', sans-serif;
 	font-weight: 600;
 }
 
 .price {
 	font-size: 20px;
-	color:red;
-	font-family: Arial;
+	color:black;
+	font-family: 'Exo 2', sans-serif;
 	text-align: right;
 }
 
@@ -45,14 +45,15 @@ figure img{
 
 blockquote {
 	padding: 1rem;
-	background-color: #c1d82f;
-	border-left: 3px solid #7ac143;
+	background-color: rgba(74, 64, 72, 0);
+	border-left: 3px solid #000000;
 	margin: 0.5rem 0;
+	font-family: 'Roboto', sans-serif;
 }
 
 footer {
 	text-align: right;
-	border-top: thin solid #aaa;
+	border-top: thin solid rgba(170, 170, 170, 0);
 }
 
 /* *VIEWER */
@@ -60,7 +61,9 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 60px 200px 300px;
-  grid-template-areas: "nametov nametov nametov pricetov" "photo-tov photo-tov opisanie-tov opisanie-tov" "photo-tov photo-tov harakt-tov harakt-tov";
+  grid-template-areas: "nametov nametov nametov pricetov"
+					   "photo-tov photo-tov opisanie-tov opisanie-tov"
+					   "photo-tov photo-tov harakt-tov harakt-tov";
 }
 
 .nametov { grid-area: nametov; }

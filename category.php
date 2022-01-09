@@ -6,15 +6,9 @@
 
 	if(!empty($_GET["category"])) {
 		$category = $_GET["category"];
-
-		//var_dump($category);
 		db_connect();
-
 		// многомерный массив с результирующей таблицей
 		$result = db_select("product", "category='$category'");
-		//var_dump($result );
-
-
 		db_close();
 	} else
 		header("Location: /");
@@ -43,7 +37,7 @@
 				$name = $val["name"];
 				$price = $val["price"];
 				$decsription = $val["description"];
-				$img = $val["img"] == "" ? "img/no-img.png" : $val["img"];
+				$img = $val["img"];
 
 				$count_article++;
 
@@ -53,7 +47,7 @@
 
 						<section class="usrcardprice" id="$id">
 					 <div class="usrcard">
-					   <img src="$img" alt="$name">
+					   <img src="$img">
 					   <h3>$name</h3>
 					   <p class="usrprice">$price руб.</p>
 					   <p class="usrdecsription">$decsription</p>
@@ -67,7 +61,6 @@ _OUT;
 
 					case "admin":
 						$article = <<<_OUT
-
 						<section class="cardprice" id="$id">
 					 <div class="cardadm">
 					   <img src="$img" alt="$name">
