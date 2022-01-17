@@ -1,14 +1,13 @@
 <?php
 	require_once "includes/session.php"; // на каждой странице
 	require_once "includes/mysqli.php";
-	
-	if(!empty($_SESSION["login"])) {
-		
-		$user = $_SESSION["login"];
-		
-	} else
-		header("Location: /");
-	
+
+    if(!empty($_SESSION["status"])) {
+        $user = $_SESSION["login"];
+    } else
+        header("Location: /");
+
+
 	if(isset($_POST["submit"])) {
 		
 		db_connect();
@@ -45,11 +44,10 @@
 	<main>
 		<h2><p align="center">Корзина пользователя <?=$user?></p></h2>
 		<?php
-		
-			if(isset($_SESSION["trash"])) {
+
+			if(isset($_SESSION["trash"])){
 			
 				$total_price = 0; // 0 рублей
-			
 				foreach($_SESSION["trash"] as $key => $val){
 					$id = $val["id"];
 					$name = $val["name"];

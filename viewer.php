@@ -1,12 +1,12 @@
 <?php
 	require_once "includes/session.php";
 	require_once "includes/mysqli.php";
-    if(isset($_SESSION["login"])){
-        $status = $_SESSION["status"];
-    }
-    else{
-        $status = "none";
-    }
+
+    if(!empty($_SESSION["status"])) {
+
+    } else
+        header("Location: /");
+
 	if(!empty($_GET["product"])) {
 		$product = $_GET["product"];
 

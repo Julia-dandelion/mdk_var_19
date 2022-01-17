@@ -1,13 +1,6 @@
 <?php
 	require_once "includes/session.php";
-    if(isset($_SESSION["status"])){
-        $status = $_SESSION["status"];
-        $lenTrash = count($_SESSION["trash"]);
-        $trash = $lenTrash != 0 ? "Корзина - $lenTrash товар" : "Корзина";
-    }
-    else{
-        $status = "none";
-    }
+
 ?>
 <!DOCTYPE html>
 <html>

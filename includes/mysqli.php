@@ -3,7 +3,7 @@
     // параметры подключения
 	$host = "localhost";// хост
 	$login = "root";	// логин / пароль пользователя
-	$password = "";
+	$password = "root";
 	$db = "mosiaeva_db";	// имя БД с которой будем работать
 
     // объект соединения
@@ -11,7 +11,7 @@
 
 
 	/* Подключение к БД */
-	function db_connect($host = "localhost", $login = "root", $password = "", $db = "mosiaeva_db") {
+	function db_connect($host = "localhost", $login = "root", $password = "root", $db = "mosiaeva_db") {
 		global $conn;
 		$err = false; // ошибок нет
 
@@ -109,7 +109,6 @@
 		global $conn;
 		$query = $id === "" ? "SELECT * FROM product" : "SELECT * FROM product WHERE id = $id";
 
-		//var_dump($query);
 
 		$result = mysqli_query($conn, $query);
 		if(mysqli_num_rows($result) > 0)

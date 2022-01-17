@@ -9,8 +9,3 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="js/trash.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.slider').bxSlider();
-    });
-</script>
