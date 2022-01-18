@@ -14,9 +14,15 @@
 		
 		$total_price = $_SESSION["total_price"];
 		$trash = json_encode($_SESSION["trash"], JSON_UNESCAPED_UNICODE);
-		
-		add_order($total_price, $_SESSION["login"], $trash);
-		
+
+		//Добавить проверку
+		if(add_order($total_price, $_SESSION["login"], $trash) == true){
+            $ok = "Заказ успешно оформлен !";
+            header("Refresh: 2; url=trash.php");
+        } else{
+            $error = "Ошибка при оформлении";
+        }
+
 		//var_dump($_SESSION["trash"]);
 		
 		unset($_SESSION["trash"]);
@@ -42,6 +48,22 @@
 	?>
 	
 	<main>
+        <?php
+        if(isset($error))
+            echo <<<_OUT
+				<div id="msg-error" class="msg msg-error">
+					<div>$error</div>
+					<div class="closed" onclick="msgClose('msg-error')">&#10006;</div>
+				</div>
+_OUT;
+        else if(isset($ok))
+            echo <<<_OUT
+				<div id="msg-ok" class="msg msg-ok">
+					<div>$ok</div>
+					<div class="closed" onclick="msgClose('msg-ok')">&#10006;</div>
+				</div>
+_OUT;
+        ?>
 		<h2><p align="center">Корзина пользователя <?=$user?></p></h2>
 		<?php
 

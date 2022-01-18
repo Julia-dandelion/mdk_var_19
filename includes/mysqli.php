@@ -42,8 +42,8 @@
 
 	function add_product($category, $name, $description, $img, $property, $price, $status, $vender_id) {
 		global $conn;
-		$query = "INSERT INTO product VALUES(NULL, '$category', '$name', '$description', '$img', '$property', $price, '$status', $vender_id)";
-		mysqli_query($conn, $query);
+		$query = "INSERT INTO product VALUES(NULL , '$category', '$name', '$description', '$img', '$property', '$price', '$vender_id', '$status' )";
+		var_dump(mysqli_query($conn, $query));
 	}
 
     function add_venders($name, $inn, $dir, $phone, $ur_adr, $fiz_adr, $status) {
@@ -191,3 +191,19 @@
 		mysqli_query($conn, $query);
 
 	}
+
+    function add_order($price, $login, $product, $status = "processed") {
+        global $conn;
+        $user_id = db_select("user", "login = '$login'")[0]["id"];
+        $time = time();
+
+        $query = "INSERT INTO `ord` VALUES(NULL, $time, $price, $user_id, '$product', '$status')";
+
+        //var_dump($query);
+
+        if(mysqli_query($conn, $query) == true){
+            return 1;
+        } else{
+            return 0;
+        }
+    }

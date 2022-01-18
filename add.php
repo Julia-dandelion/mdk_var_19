@@ -7,7 +7,6 @@
 	if(!empty($_POST))
 		if(isset($_POST["product"])) {
 
-
 			$category = htmlentities(mysqli_real_escape_string($conn,$_POST["category"]));
 			$name = htmlentities(mysqli_real_escape_string($conn,$_POST["name"]));
 			$description = htmlentities(mysqli_real_escape_string($conn,$_POST["description"]));
@@ -39,7 +38,9 @@
 						$type = mime_content_type($tmpPath);
 						$img = "data:$type;base64," . base64_encode($toBuffer);
 					}
-			add_product($category, $name, $description, $img, $property, $price, $status, $vender_id);
+			var_dump($status);
+            var_dump($vender_id);
+            add_product($category, $name, $description, $img, $property, $price, $status, $vender_id);
 		}
 	db_close();
 ?>
@@ -57,7 +58,7 @@
 		require_once "blocks/header.php";
 	?>
 	<main>
-		<h2>Добавление</h2>
+		<h2>Добавление товара</h2>
 		<form id="product" class="add" method="post" enctype="multipart/form-data">
 			<div class="box">
 				<label>Категория продукта</label>
