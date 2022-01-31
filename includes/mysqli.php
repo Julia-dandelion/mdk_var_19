@@ -39,8 +39,8 @@
 	function add_product($category, $name, $description, $img, $property, $price, $status) {
 		global $conn;
 		$query = "INSERT INTO product VALUES(NULL , '$category', '$name', '$description', '$img', '$property', '$price', '$status' )";
-		//var_dump()
-        (mysqli_query($conn, $query));
+		//var_dump($query);
+        mysqli_query($conn, $query);
 	}
     //удаление продукта
     function delete_product($id) {

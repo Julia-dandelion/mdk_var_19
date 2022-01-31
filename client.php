@@ -25,6 +25,8 @@
 
             //добавляем заказчика
 			add_client($name, $inn, $direct, $phone_num, $legal_ad, $physical_ad, $status);
+            $ok = "Клиент успешно добавлен";
+            header("Refresh: 1; url=client.php");
 		}
 	db_close();
 ?>
@@ -39,6 +41,22 @@
 	<?php
 		require_once "blocks/header.php";
 	?>
+    <?php //вывод ошибок\оповещений об успехе
+    if(isset($error))
+        echo <<<_OUT
+				<div id="msg-error" class="msg msg-error">
+					<div>$error</div>
+					<div class="closed" onclick="msgClose('msg-error')">&#10006;</div>
+				</div>
+_OUT;
+    else if(isset($ok))
+        echo <<<_OUT
+				<div id="msg-ok" class="msg msg-ok">
+					<div>$ok</div>
+					<div class="closed" onclick="msgClose('msg-ok')">&#10006;</div>
+				</div>
+_OUT;
+    ?>
 	<main>
 		<h2>Добавление поставщика</h2>
 		<form id="vender" class="add" method="post" enctype="multipart/form-data">

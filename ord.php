@@ -18,7 +18,7 @@
 			delite_ord($id);
 			db_close();
             $ok = "Заказ успешно удален";
-            header("Refresh: 2; url=ord.php");
+            header("Refresh: 1; url=ord.php");
 		}
 		else
 		{

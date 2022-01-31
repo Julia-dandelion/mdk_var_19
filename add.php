@@ -15,7 +15,7 @@
 	db_connect();
 
 	if(!empty($_POST))
-		if(isset($_POST["tovat"])) {
+		if(isset($_POST["tovar"])) {
 		    //Переменные хранящие данные о продукте
 			$category = htmlentities(mysqli_real_escape_string($conn,$_POST["category"]));
 			$name = htmlentities(mysqli_real_escape_string($conn,$_POST["name"]));
@@ -44,6 +44,8 @@
 					}
             //Добавляем продукт в БД
             add_product($category, $name, $description, $img, $property, $price, $status);
+            $ok = "Товар успешно добавлен";
+            header("Refresh: 1; url=add.php");
 		}
 	db_close();
 ?>
@@ -57,6 +59,23 @@
 </head>
 <body>
 	<?php require_once "blocks/header.php"; ?>
+    <?php require_once "blocks/header.php"; //Модуль навигационного меню?>
+    <?php //вывод ошибок\оповещений об успехе
+    if(isset($error))
+        echo <<<_OUT
+				<div id="msg-error" class="msg msg-error">
+					<div>$error</div>
+					<div class="closed" onclick="msgClose('msg-error')">&#10006;</div>
+				</div>
+_OUT;
+    else if(isset($ok))
+        echo <<<_OUT
+				<div id="msg-ok" class="msg msg-ok">
+					<div>$ok</div>
+					<div class="closed" onclick="msgClose('msg-ok')">&#10006;</div>
+				</div>
+_OUT;
+    ?>
 	<main>
 		<h2>Добавление товара</h2>
 		<form id="tovar" class="add" method="post" enctype="multipart/form-data">

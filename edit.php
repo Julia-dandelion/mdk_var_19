@@ -41,7 +41,8 @@
 			$property = json_encode($property, JSON_UNESCAPED_UNICODE); //второй параметр чтобы отменить кодирование многобайтных символов
             //обновляем данные в БД
 			db_update_product($id, $name, $description, $property, $price);
-
+            $ok = "Товар успешно изменен";
+            header("Refresh: 1; url=edit.php");
 		}
 
 		$id = $_GET["product"];
@@ -65,11 +66,25 @@
 </head>
 
 <body>
-
 	<?php
 		require_once "blocks/header.php";
 	?>
-
+    <?php //вывод ошибок\оповещений об успехе
+    if(isset($error))
+        echo <<<_OUT
+				<div id="msg-error" class="msg msg-error">
+					<div>$error</div>
+					<div class="closed" onclick="msgClose('msg-error')">&#10006;</div>
+				</div>
+_OUT;
+    else if(isset($ok))
+        echo <<<_OUT
+				<div id="msg-ok" class="msg msg-ok">
+					<div>$ok</div>
+					<div class="closed" onclick="msgClose('msg-ok')">&#10006;</div>
+				</div>
+_OUT;
+    ?>
 	<main>
 
 		<h2>Редактирование</h2>

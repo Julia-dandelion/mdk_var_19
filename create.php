@@ -21,6 +21,8 @@ if(!empty($_POST))
         $status = htmlentities(mysqli_real_escape_string($conn, $_POST["status"]));
         //Добавление пользователя
         add_user($name, $pas_two, $status);
+        $ok = "Пользователь успешно добавлен";
+        header("Refresh: 1; url=create.php");
     }
 db_close();
 ?>
@@ -34,6 +36,22 @@ db_close();
 <body>
 <?php
 require_once "blocks/header.php";
+?>
+<?php //вывод ошибок\оповещений об успехе
+if(isset($error))
+    echo <<<_OUT
+				<div id="msg-error" class="msg msg-error">
+					<div>$error</div>
+					<div class="closed" onclick="msgClose('msg-error')">&#10006;</div>
+				</div>
+_OUT;
+else if(isset($ok))
+    echo <<<_OUT
+				<div id="msg-ok" class="msg msg-ok">
+					<div>$ok</div>
+					<div class="closed" onclick="msgClose('msg-ok')">&#10006;</div>
+				</div>
+_OUT;
 ?>
 <main>
     <h2>Добавление пользователя</h2>
@@ -49,7 +67,6 @@ require_once "blocks/header.php";
             <select name="status">
                 <option selected value="user">Пользователь</option>
                 <option  value="admin">Администратор</option>
-                <option  value="employee">Продавец</option>
             </select>
         </div>
 
