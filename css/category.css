@@ -22,22 +22,22 @@
 }
 
 .card img {
-	height:125px;
-  width: 200px;
+    height:420px;
+    width: 420px;
 }
 ::-webkit-scrollbar {
     display: none;
 }
 .card {
-height:330px;
-width:200px;
-padding:15px;
+height:700px;
+width:700px;
+margin-left:20px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-max-width: 200px; /* Ограничение ширины */
 margin: auto;
 text-align: center;
 font-family: sans-serif;
 }
+
 .card section {
  position: fixed;
  top: 50%;
@@ -56,14 +56,13 @@ font-family: sans-serif;
 	width:100%;
 }
 .cardadm {
-height:453px;
-width:200px;
-padding:15px;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-max-width: 200px; /* Ограничение ширины */
-margin: auto;
-text-align: center;
-font-family: sans-serif;
+    height:780px;
+    width:700px;
+    padding:15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    text-align: center;
+    font-family: sans-serif;
 }
 .cardadm section {
  position: fixed;
@@ -85,13 +84,11 @@ font-family: sans-serif;
 .cardadm p {
  font-size: 14px;
 }
-.cardadm h3 {
- color: #767676;
-}
+
 
 .cardadm img {
-	height:125px;
-  width: 200px;
+    height:400px;
+    width: 400px;
 }
 .usrcard button {
  border: none;

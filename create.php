@@ -2,22 +2,26 @@
 require_once "includes/session.php";
 require_once "includes/mysqli.php";
 
+//Проверка наличия авторизации
+if(!empty($_SESSION["status"])) {
+    $user = $_SESSION["login"];
+}
+else{
+    header("Location: /signup.php");
+}
+
 db_connect();
 
 if(!empty($_POST))
-    var_dump(1);
-if(isset($_POST["vender"])) {
-    var_dump(2);
-
-
-    $name = htmlentities(mysqli_real_escape_string($conn,$_POST["name"]));
-    $pas_one = htmlentities(mysqli_real_escape_string($conn,$_POST["pas_one"]));
-    $pas_two = htmlentities(mysqli_real_escape_string($conn,$_POST["pas_two"]));
-    $status = htmlentities(mysqli_real_escape_string($conn, $_POST["status"]));
-
-
-    add_usr($name, $pas_one, $pas_two, $status);
-}
+    if(isset($_POST["user"])) {
+        //переменные
+        $name = htmlentities(mysqli_real_escape_string($conn,$_POST["name"]));
+        $pas_one = htmlentities(mysqli_real_escape_string($conn,$_POST["pas_one"]));
+        $pas_two = htmlentities(mysqli_real_escape_string($conn,$_POST["pas_two"]));
+        $status = htmlentities(mysqli_real_escape_string($conn, $_POST["status"]));
+        //Добавление пользователя
+        add_user($name, $pas_two, $status);
+    }
 db_close();
 ?>
 <!DOCTYPE html>
@@ -53,8 +57,6 @@ require_once "blocks/header.php";
 
     </form>
 </main>
-
-
 </body>
 <?php require_once "blocks/footer.php"; ?>
 </html>

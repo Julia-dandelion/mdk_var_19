@@ -5,7 +5,6 @@
   grid-template-areas: "footer-logo footer-getst footer-abous footer-suport footer-contact" "footer-logo footer-getst footer-abous footer-suport footer-contact" "footer-endfot footer-endfot footer-endfot footer-endfot footer-endfot";
 }
 
-.footer-logo { grid-area: footer-logo; }
 
 .footer-logo img {width: 150px;margin:20px 0px 0px 150px}
 
@@ -14,8 +13,6 @@
 .footer-abous { grid-area: footer-abous; }
 
 .footer-suport { grid-area: footer-suport; }
-
-.footer-contact { grid-area: footer-contact; }
 
 .footer-endfot { grid-area: footer-endfot; }
 

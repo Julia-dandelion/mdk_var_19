@@ -2,6 +2,14 @@
 	require_once "includes/session.php";
 	require_once "includes/mysqli.php";
 
+    //Проверка наличия авторизации
+    if(!empty($_SESSION["status"])) {
+        $user = $_SESSION["login"];
+    }
+    else{
+        header("Location: /signup.php");
+    }
+
 	db_connect();
 
 	if(!empty($_GET["product"]) && isset($_GET["product"])) {
@@ -9,24 +17,18 @@
 		$id = $_GET["product"];
 
 		if(isset($_POST["product-edit"])) {
-
+            //переменные
 			$name = htmlentities(mysqli_real_escape_string($conn,$_POST["name"]));
 			$description = htmlentities(mysqli_real_escape_string($conn,$_POST["description"]));
 			$price = htmlentities(mysqli_real_escape_string($conn,$_POST["price"]));
-
-			// процесс преобразование пары свойство/значение в строку формата JSON
+			//процесс преобразование пары свойство/значение в строку формата JSON
 			$property_name = $_POST["property-name"]; // получаем наши массивы
 			$property_value = $_POST["property-value"];
-			// из двух массивов сделаем один
+			//из двух массивов сделаем один
 			$property= array(
 				"name" => array(),
 				"value" => array()
 			);
-
-			//var_dump($property_name);
-			//var_dump($property_value);
-
-
 			// проверим каждое из значение массива на постороние вставки кода
 			for($len = count($property_name), $i = 0; $i < $len; ++$i) {
 				$property["name"][] = htmlentities(mysqli_real_escape_string($conn,$property_name[$i]));
@@ -35,16 +37,16 @@
 
 			//var_dump($property);
 
-			// последний этап преобразуем массив в строку формата JSON
+			//последний этап преобразуем массив в строку формата JSON
 			$property = json_encode($property, JSON_UNESCAPED_UNICODE); //второй параметр чтобы отменить кодирование многобайтных символов
-
+            //обновляем данные в БД
 			db_update_product($id, $name, $description, $property, $price);
 
 		}
 
 		$id = $_GET["product"];
 
-		$result = get_product($id)[0]; // мы знаем что вернётся только одна строка
+		$result = get_product($id)[0];
 		//var_dump($result);
 		$property = json_decode($result["property"], TRUE);
 		//var_dump($property);
@@ -90,7 +92,7 @@
 				<div id="listProperty">
 
 						<?php
-
+                        //Получаем свойства продукта из БД и выводим их на страницу для редактирования
 						$name = $property["name"];
 						$value = $property["value"];
 

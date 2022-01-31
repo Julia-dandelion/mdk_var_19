@@ -1,6 +1,14 @@
 <?php
 	require_once "includes/session.php";
 
+    //Проверка наличия авторизации
+    if(!empty($_SESSION["status"])) {
+        $user = $_SESSION["login"];
+    }
+    else{
+        header("Location: /signup.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,9 +18,7 @@
 </head>
 
 <body>
-
-	<?php 	require_once "blocks/header.php"; ?>
-
+	<?php require_once "blocks/header.php"; //Модуль навигационного меню?>
 	<main>
 		<center>
 		<h1 class='ctrh'>Популярное</h1>
@@ -85,5 +91,7 @@
 		</center>
 	</main>
 </body>
-	<?php require_once "blocks/footer.php"; ?>
+<footer>
+    <?php require_once "blocks/footer.php"; //подвал?>
+</footer>
 </html>

@@ -3,16 +3,16 @@
 	require_once "includes/mysqli.php";
 	if(!empty($_POST)) {
 		if( !db_connect() ) {
-
+            //переменные
 			$user = htmlentities(mysqli_real_escape_string($conn, $_POST["login"]));
 			$password = htmlentities(mysqli_real_escape_string($conn, $_POST["password"]));
 			$repeatpassword = htmlentities(mysqli_real_escape_string($conn, $_POST["repeatpassword"]));
-
+            //много условий
 			if (!empty($user))
 				if (!db_check_usr($user))
 					if (strcmp($password, $repeatpassword) === 0)
 						if(!empty($password) || !empty($repeatpassword)){
-							add_usr($user, $password);
+                            add_user($user, $password);
 							header("Refresh: 2; url=index.php");
 						} else
 							$error = "Пароль не может быть пустым";
@@ -46,7 +46,7 @@
 	?>
 
 	<main>
-	<?php
+	<?php //вывод ошибок\оповещений об успехе 
 		if(isset($error))
 			echo <<<_OUT
 				<div id="msg-error" class="msg msg-error">

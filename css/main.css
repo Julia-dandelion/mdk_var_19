@@ -187,7 +187,7 @@ a:hover {
 
 #admp{
 	position:relative;
-	margin-left:20px;
+    font-size: 25px;
 }
 
 /* *NAV */
@@ -239,7 +239,7 @@ main {
 }
 
 .price {
-  color: red;
+  color: black;
   font-size: 18px;
 }
 .card h3 {
@@ -247,18 +247,17 @@ main {
 }
 
 .card img {
-	height:125px;
-  width: 200px;
+    height:700px;
+    width: 500px;
 }
 ::-webkit-scrollbar {
     display: none;
 }
 .card {
-height:330px;
-width:200px;
+    height:700px;
+    width:700px;
 padding:15px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-max-width: 200px; /* Ограничение ширины */
 margin: auto;
 text-align: center;
 font-family: sans-serif;
@@ -295,7 +294,7 @@ font-family: sans-serif;
 
 .img_main_one{
     background-color: #767676;
-	height:350px;
+	height:200px;
 	width:250px;
 }
 

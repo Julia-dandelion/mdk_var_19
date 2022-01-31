@@ -1,17 +1,17 @@
 <?php
 	require_once "includes/session.php";
 	require_once "includes/mysqli.php";
-
+    //Проверка наличия авторизации
     if(!empty($_SESSION["status"])) {
-
-    } else
-        header("Location: /");
+        $user = $_SESSION["login"];
+    }
+    else{
+        header("Location: /signup.php");
+    }
 
 	if(!empty($_GET["product"])) {
 		$product = $_GET["product"];
-
 		db_connect();
-
 		$result = get_product($product)[0]; // мы знаем что вернётся только одна строка
 		//var_dump($result);
 		db_close();
@@ -19,34 +19,31 @@
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<?php require_once "blocks/head.php"; ?>
 	<link rel="stylesheet" href="css/viewer.css">
 </head>
 
 <body>
-
 	<?php
-		require_once "blocks/header.php"; // шапка сайта
+		require_once "blocks/header.php";
 	?>
-
 <main>
-	<?php
+	<?php //выводим товар для просмотра в зависимости от статуса пользователя
 	if (isset($result)) {
 	    $id = $result["id"];
         $name = $result["name"];
         $price = $result["price"];
         $img = $result["img"];
         $description = $result["description"];
-
+        //получаем все свойства товара
         $property = json_decode($result["property"], TRUE);
         $len = count($property["name"]);
-
+        //вывводим все свойства
         for($i=0; $i<$len; ++$i) {
             echo "<p>" . $property["name"][$i] . " - " . $property["value"][$i] . "</p>";
         }
-
+                //в зависимости от статуса выводим разные страницы просмотра
 				switch($status) {
 					case "user":
 				$izvi=<<<_OUT
@@ -59,9 +56,7 @@
                     <div class="harakt-tov"><div><button type="button" onclick="productInTrash($id)">Заказать</button></div>
 _OUT;
 				echo $izvi;
-
 				break;
-
 					case "admin":
 				$izvi=<<<_OUT
                     <div class="view-container">
@@ -78,9 +73,7 @@ _OUT;
                     </div>
 _OUT;
 				echo $izvi;
-
 				break;
-
 					default:
 				$izvi=<<<_OUT
                     <div class="view-container">
@@ -100,12 +93,11 @@ _OUT;
 else{
 	?>
 	<center>
-<h1 class='block1'> ТОВАР НЕ СУЩЕСТВУЕТ </h1>
+<h1 class='block1'>Данного товара не существует</h1>
 	</center>
 	<?php
 }
 ?>
-
 	</div>
 	</main>
 	<?php require_once "blocks/footer.php"; ?>

@@ -1,4 +1,5 @@
 <?php
+    //Подключаем сессию и функции для работы с БД
 	require_once "session.php";
 	require_once "mysqli.php";
 	
@@ -13,5 +14,4 @@
 		
 		echo count($_SESSION["trash"]);
 	}
-
 ?>

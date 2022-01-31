@@ -1,8 +1,15 @@
 <?php
+    //Подключаем сессию и команды для работы с БД
 	require_once "includes/session.php";
 	require_once "includes/mysqli.php";
 
-	define("MAX_PRODUCTS_ON_PAGE", 4);
+    //Проверка наличия авторизации
+    if(!empty($_SESSION["status"])) {
+        $user = $_SESSION["login"];
+    }
+    else{
+        header("Location: /signup.php");
+    }
 
 	if(!empty($_GET["category"])) {
 		$category = $_GET["category"];
@@ -18,7 +25,6 @@
 
 <head>
 	<?php require_once "blocks/head.php"; ?>
-
 	<link rel="stylesheet" href="css/category.css">
 </head>
 
@@ -30,22 +36,24 @@
 
 	<main>
 		<?php
+        //Вывод товаров на страницу в зависимости от статуса пользователя
+        //Если неавторизованный, то только с возможностью просмотра
+        //Если авторизованный, то и с возможностью покупки
+        //Если администратор, полное радвктирование и возможности других пользователей
 			$count_article = 0;
-
 			foreach($result as $key => $val) {
 				$id = $val["id"];
 				$name = $val["name"];
 				$price = $val["price"];
 				$decsription = $val["description"];
 				$img = $val["img"];
-
 				$count_article++;
-
 				switch($_SESSION["status"]) {
 					case "user":
 						$article = <<<_OUT
-
-						<section class="usrcardprice" id="$id">
+                    
+                    <center>
+					<section class="usrcardprice" id="$id">
 					 <div class="usrcard">
 					   <img src="$img">
 					   <h3>$name</h3>
@@ -55,12 +63,15 @@
 						 <a href="viewer.php?product=$id" class="usrbtn"><button>Посмотреть</button></a>
 					 </div>
 					 </section>
+					 <br>
+					 </center>
 
 _OUT;
 						break;
 
 					case "admin":
 						$article = <<<_OUT
+                    <center>
 						<section class="cardprice" id="$id">
 					 <div class="cardadm">
 					   <img src="$img" alt="$name">
@@ -73,11 +84,15 @@ _OUT;
 						 <a class="tools" href="delete.php?product=$id"><button>Удалить</button></a>
 					 </div>
 					 </section>
+                      <br>
+                      <br>
+                     </center>
 _OUT;
 						break;
 
 					default:
 						$article = <<<_OUT
+                    <center>
 						<section class="cardprice" id="$id">
 					 <div class="card">
 						 <img src="$img" alt="$name">
@@ -87,55 +102,15 @@ _OUT;
 						 <a href="viewer.php?product=$id" class="btn"><button>Посмотреть</button></a>
 					 </div>
 					 </section>
+                        <br>
+                         </center>
 _OUT;
 					break;
 				}
-
-				/*
-				if(isset($_SESSION["status"]))
-					$article = <<<_OUT
-						<article id="$id">
-							<header class="name">$name</header>
-							<div class="wrap">
-								<figure>
-									<img src="$img">
-								</figure>
-
-							<p class="description">$decsription</p>
-							</div>
-							<footer class="price">$price руб.</footer>
-							<a href="viewer.html?product=$id" class="btn">Посмотреть</a>
-							<button type="button" onclick="productInTrash($id)">Заказать товар</button>
-						</article>
-_OUT;
-				else
-					$article = <<<_OUT
-						<article id="$id">
-							<header class="name">$name</header>
-							<div class="wrap">
-								<figure>
-									<img src="$img">
-								</figure>
-
-							<p class="description">$decsription</p>
-							</div>
-							<footer class="price">$price</footer>
-							<a href="viewer.html?product=$id" class="btn">Посмотреть</a>
-						</article>
-_OUT;
-					*/
-
 				echo $article;
-
-				//if(count_article == MAX_PRODUCTS_ON_PAGE ) break;
 			}
-
 		?>
-
-
 	</main>
-
-
 </body>
 	<?php require_once "blocks/footer.php"; ?>
 </html>
